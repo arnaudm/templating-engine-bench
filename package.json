@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "dustjs-linkedin": "^3.0.1",
     "ejs": "^3.1.10",
     "eta": "^4.0.1",
     "fs": "^0.0.1-security",
