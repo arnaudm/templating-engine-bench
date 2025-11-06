@@ -8,7 +8,7 @@ const CACHE = {};
 
 module.exports = {
   name: 'dustjs',
-  ext: 'dust',
+  ext: 'dustjs',
   render: function(templatePath, data) {
     let templateName = CACHE[templatePath];
 
