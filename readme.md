@@ -1,4 +1,4 @@
-# Templating Engine Benchmark
+# Template Engine Benchmark
 
 This project is a benchmark designed to evaluate the performance of various JavaScript template engines. It allows developers to compare rendering performance of several popular template engines in various scenarios.
 
@@ -25,8 +25,8 @@ Once the benchmark is completed, the results will be automatically updated in th
 ## Current results
 
 The tests were carried out on:
-- Node v20.12.0
-- MacBook Pro M1, 13-inch with 16GB of RAM (2020)
+- Node v21.7.2
+- MacBook Air M2, 15-inch with 16GB of RAM (2023)
 
 <!-- <render performance> -->
 ## RENDER 
@@ -133,3 +133,5 @@ templates
 ```
 
  And that's it, all you have to do is launch the benchmark!
+
+ PRs are welcome 😃❤️

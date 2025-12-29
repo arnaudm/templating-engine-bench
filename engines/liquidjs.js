@@ -1,6 +1,6 @@
 const { Liquid } = require('liquidjs');
 const engine = new Liquid({
-  cache: true  // Enable caching to avoid opening files multiple times
+  cache: true
 });
 
 module.exports = {
