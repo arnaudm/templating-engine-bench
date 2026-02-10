@@ -1,11 +1,17 @@
 const ejs = require('ejs');
 const fs = require('fs');
 
+const CACHE = {};
+
 module.exports = {
   name: 'ejs',
   ext: 'ejs',
   render: function(templatePath, data) {
-    const template = fs.readFileSync(templatePath, 'utf-8');
-    return ejs.render(template, data);
+    let template = CACHE[templatePath];
+    if (!template) {
+      template = ejs.compile(fs.readFileSync(templatePath, 'utf-8'));
+      CACHE[templatePath] = template;
+    }
+    return template(data);
   }
 };

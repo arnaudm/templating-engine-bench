@@ -1,18 +1,10 @@
 const fs = require('fs');
 
-let templateDirs  = fs.readdirSync('./templates');
-let engineDirs    = fs.readdirSync('./engines');
+const templateDirs = fs.readdirSync('./templates');
+const engineDirs = fs.readdirSync('./engines');
 
-let enabledGroups  = [];
-let enabledEngines = [];
-
-if (enabledGroups && enabledGroups.length > 0) {
-  templateDirs = templateDirs.filter(dir => enabledGroups.includes(dir));
-}
-
-if (enabledEngines && enabledEngines.length > 0) {
-  engineDirs = engineDirs.filter(engine => enabledEngines.includes(engine.split('.').slice(0, -1).toString()));
-}
+// Helper function to extract engine name from filename
+const getEngineName = (filename) => filename.split('.').slice(0, -1).join('.');
 
 const bench = (engine, template, data, n) => {
   const start = Date.now();
@@ -42,22 +34,27 @@ for (let dir of templateDirs) {
   }
   
   const n  = 5000;
-  results += `\n### ${dir} (runned ${n} times) \n`;
+  results += `\n### ${dir} (run ${n} times) \n`;
 
   let benchmarks = [];
 
   for (let engine of engineDirs ) {
-    const engineName = engine.split('.').slice(0, -1).toString();
+    const engineName = getEngineName(engine);
     const enginePath = require('./engines/' + engine);
 
     const templatePath = './templates/' + dir + '/template.' + enginePath.ext;
     if (!fs.existsSync(templatePath)) {
       continue;
     }
-    console.log(`${engineName} working on ${dir}...`);
-    const benchmark = bench(enginePath, templatePath, data, n)
-    console.log(`${engineName} has finished to work !\n`)
-    benchmarks.push({ engineName, benchmark});
+    
+    try {
+      console.log(`${engineName} working on ${dir}...`);
+      const benchmark = bench(enginePath, templatePath, data, n);
+      console.log(`${engineName} has finished to work !\n`);
+      benchmarks.push({ engineName, benchmark});
+    } catch (error) {
+      console.error(`Error with ${engineName} on ${dir}: ${error.message}\n`);
+    }
   };
 
   benchmarks.sort((a, b) => a.benchmark - b.benchmark);
