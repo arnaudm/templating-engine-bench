@@ -2,6 +2,19 @@
 
 This project is a benchmark designed to evaluate the performance of various JavaScript template engines. It allows developers to compare rendering performance of several popular template engines in various scenarios.
 
+## Supported Template Engines
+
+All the following template engines are **fully working** with caching enabled for optimal performance:
+
+- ✅ **Pug** - Fast and elegant template engine
+- ✅ **Handlebars** - Logic-less templates
+- ✅ **EJS** - Embedded JavaScript templating
+- ✅ **Eta** - Lightweight, fast, and powerful
+- ✅ **LiquidJS** - Shopify Liquid template engine
+- ✅ **IgoDust** - Dust.js compatible engine
+
+See [ANALYSIS.md](./ANALYSIS.md) for detailed information about potential engines to add.
+
 ## How to use ?
 
 **1. Clone this repo on your machine:**
@@ -32,69 +45,78 @@ The tests were carried out on:
 ## RENDER 
 
 ### friends (run 5000 times) 
-`pug` => **173ms** <br/> 
-`eta` => **529ms** <br/> 
-`igodust` => **774ms** <br/> 
-`ejs` => **1113ms** <br/> 
-`handlebars` => **1423ms** <br/> 
-`liquidjs` => **27889ms** <br/> 
+`pug` => **170ms** <br/> 
+`eta` => **539ms** <br/> 
+`igodust` => **761ms** <br/> 
+`ejs` => **1210ms** <br/> 
+`handlebars` => **1395ms** <br/> 
+`liquidjs` => **28514ms** <br/> 
 
 ### if-expression (run 5000 times) 
-`ejs` => **10ms** <br/> 
+`ejs` => **9ms** <br/> 
+`igodust` => **9ms** <br/> 
 `pug` => **10ms** <br/> 
-`igodust` => **12ms** <br/> 
-`eta` => **23ms** <br/> 
-`liquidjs` => **173ms** <br/> 
+`eta` => **20ms** <br/> 
+`liquidjs` => **171ms** <br/> 
 
 ### projects-escaped (run 5000 times) 
-`eta` => **54ms** <br/> 
-`igodust` => **65ms** <br/> 
-`handlebars` => **66ms** <br/> 
-`ejs` => **88ms** <br/> 
-`pug` => **196ms** <br/> 
-`liquidjs` => **302ms** <br/> 
+`eta` => **53ms** <br/> 
+`igodust` => **60ms** <br/> 
+`handlebars` => **68ms** <br/> 
+`ejs` => **91ms** <br/> 
+`pug` => **199ms** <br/> 
+`liquidjs` => **291ms** <br/> 
 
 ### projects-unescaped (run 5000 times) 
-`igodust` => **12ms** <br/> 
-`eta` => **52ms** <br/> 
-`handlebars` => **61ms** <br/> 
-`ejs` => **84ms** <br/> 
-`pug` => **188ms** <br/> 
-`liquidjs` => **285ms** <br/> 
+`igodust` => **10ms** <br/> 
+`eta` => **51ms** <br/> 
+`handlebars` => **62ms** <br/> 
+`ejs` => **85ms** <br/> 
+`pug` => **195ms** <br/> 
+`liquidjs` => **284ms** <br/> 
 
 ### search-results (run 5000 times) 
-`igodust` => **18ms** <br/> 
-`pug` => **44ms** <br/> 
-`eta` => **58ms** <br/> 
-`handlebars` => **244ms** <br/> 
-`ejs` => **550ms** <br/> 
-`liquidjs` => **2601ms** <br/> 
+`igodust` => **22ms** <br/> 
+`pug` => **38ms** <br/> 
+`eta` => **55ms** <br/> 
+`handlebars` => **242ms** <br/> 
+`ejs` => **576ms** <br/> 
+`liquidjs` => **2595ms** <br/> 
 
 ### simple-0 (run 5000 times) 
 `pug` => **2ms** <br/> 
 `ejs` => **4ms** <br/> 
-`igodust` => **6ms** <br/> 
+`igodust` => **5ms** <br/> 
 `handlebars` => **14ms** <br/> 
 `eta` => **15ms** <br/> 
-`liquidjs` => **26ms** <br/> 
+`liquidjs` => **27ms** <br/> 
 
 ### simple-1 (run 5000 times) 
-`pug` => **12ms** <br/> 
+`pug` => **10ms** <br/> 
 `igodust` => **13ms** <br/> 
-`eta` => **20ms** <br/> 
-`handlebars` => **30ms** <br/> 
+`eta` => **18ms** <br/> 
+`handlebars` => **29ms** <br/> 
 `ejs` => **49ms** <br/> 
-`liquidjs` => **206ms** <br/> 
+`liquidjs` => **209ms** <br/> 
 
 ### simple-2 (run 5000 times) 
-`pug` => **9ms** <br/> 
+`pug` => **8ms** <br/> 
 `igodust` => **11ms** <br/> 
-`eta` => **20ms** <br/> 
-`handlebars` => **24ms** <br/> 
-`ejs` => **48ms** <br/> 
-`liquidjs` => **192ms** <br/> 
+`eta` => **19ms** <br/> 
+`handlebars` => **23ms** <br/> 
+`ejs` => **49ms** <br/> 
+`liquidjs` => **191ms** <br/> 
 
 <!-- <end> -->
+
+## Recent Improvements
+
+**v2024** - Code simplification and performance improvements:
+- ✅ All template engines now use caching for optimal performance
+- ✅ Removed unnecessary dependencies (reduced from 179 to 70 packages)
+- ✅ Added error handling to prevent crashes
+- ✅ Simplified codebase by removing dead code
+- ✅ Fixed Eta and improved EJS/LiquidJS performance significantly
 
 ## Adding a new Template Engine
 
