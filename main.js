@@ -4,7 +4,7 @@ const templateDirs = fs.readdirSync('./templates');
 const engineDirs = fs.readdirSync('./engines');
 
 // Helper function to extract engine name from filename
-const getEngineName = (filename) => filename.split('.').slice(0, -1).join('.');
+const getEngineName = (filename) => filename.replace(/\.[^.]+$/, '');
 
 const bench = (engine, template, data, n) => {
   const start = Date.now();
