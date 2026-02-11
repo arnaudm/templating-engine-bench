@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <p>{{text ~ s}}</p>
+    {{@if(projects.length > 0)}}
+      {{@each(projects) => project}}
+        <a href="{{project.url}}">{{project.name ~ s}}</a>
+        <p>{{project.description}}</p>
+      {{/each}}
+    {{#else}}
+      <p>No projects</p>
+    {{/if}}
+  </body>
+</html>
