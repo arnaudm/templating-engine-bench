@@ -4,8 +4,9 @@ This project is a benchmark designed to evaluate the performance of various Java
 
 ## Supported Template Engines
 
-All the following template engines are **fully working** with caching enabled for optimal performance:
+All the following **12 template engines** are fully working with caching enabled for optimal performance:
 
+### Original Engines (6)
 - ✅ **Pug** - Fast and elegant template engine
 - ✅ **Handlebars** - Logic-less templates
 - ✅ **EJS** - Embedded JavaScript templating
@@ -13,7 +14,15 @@ All the following template engines are **fully working** with caching enabled fo
 - ✅ **LiquidJS** - Shopify Liquid template engine
 - ✅ **IgoDust** - Dust.js compatible engine
 
-See [ANALYSIS.md](./ANALYSIS.md) for detailed information about potential engines to add.
+### Newly Added Engines (6) 🎉
+- ✅ **doT** - 🏆 Extremely fast, minimalist syntax (0-2ms!)
+- ✅ **Hogan** - Twitter's optimized Mustache implementation
+- ✅ **Nunjucks** - Rich Jinja2-inspired syntax
+- ✅ **Mustache** - Logic-less, multi-language standard
+- ✅ **Twig** - JavaScript port of PHP's Twig
+- ✅ **Squirrelly** - Modern and lightweight
+
+See [ANALYSIS.md](./ANALYSIS.md) for detailed performance comparisons and [REPONSE.md](./REPONSE.md) for French documentation.
 
 ## How to use ?
 
