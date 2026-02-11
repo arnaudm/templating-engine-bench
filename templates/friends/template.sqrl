@@ -6,7 +6,7 @@
 </head>
 <body>
     <div class="friends">
-        {{@each(friends) => friend}}
+        {{@each(it.friends) => friend}}
         <div class="friend">
             <ul>
                 <li>Name: {{friend.firstName}} {{friend.lastName}}</li>

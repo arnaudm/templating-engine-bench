@@ -1,4 +1,4 @@
-{{@each(accounts) => account}}
+{{@each(it.accounts) => account}}
   <div>
     {{@if(account.accountStatus === "closed")}}
       <div>

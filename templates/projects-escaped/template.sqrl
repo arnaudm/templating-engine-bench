@@ -1,11 +1,11 @@
 <html>
   <head>
-    <title>{{title}}</title>
+    <title>{{it.title}}</title>
   </head>
   <body>
-    <p>{{text}}</p>
-    {{@if(projects.length > 0)}}
-      {{@each(projects) => project}}
+    <p>{{it.text}}</p>
+    {{@if(it.projects.length > 0)}}
+      {{@each(it.projects) => project}}
         <a href="{{project.url}}">{{project.name}}</a>
         <p>{{project.description}}</p>
       {{/each}}

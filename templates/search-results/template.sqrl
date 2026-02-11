@@ -6,7 +6,7 @@
 
   <div id="resultsContainer">
     <div class="hd">
-      <span class="count"><span id="count">{{totalCount}}</span> results</span>
+      <span class="count"><span id="count">{{it.totalCount}}</span> results</span>
       <div class="view-modifiers">
         <div class="view-select">
           View: 
@@ -21,8 +21,8 @@
     </div>
 
     <div id="resultsTarget">
-      <div class="search-results view-{{view}}">
-        {{@each(searchRecords) => record}}
+      <div class="search-results view-{{it.view}}">
+        {{@each(it.searchRecords) => record}}
         <div class="search-item">
           <div class="search-item-container drop-shadow">
             <div class="img-container">

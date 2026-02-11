@@ -45,67 +45,112 @@ The tests were carried out on:
 ## RENDER 
 
 ### friends (run 5000 times) 
-`pug` => **171ms** <br/> 
-`eta` => **524ms** <br/> 
-`igodust` => **743ms** <br/> 
-`ejs` => **1118ms** <br/> 
-`handlebars` => **1415ms** <br/> 
-`liquidjs` => **27957ms** <br/> 
+`dot` => **85ms** <br/> 
+`pug` => **170ms** <br/> 
+`eta` => **518ms** <br/> 
+`squirrelly` => **667ms** <br/> 
+`igodust` => **757ms** <br/> 
+`ejs` => **1121ms** <br/> 
+`handlebars` => **1374ms** <br/> 
+`nunjucks` => **4339ms** <br/> 
+`twig` => **12517ms** <br/> 
+`liquidjs` => **28088ms** <br/> 
 
 ### if-expression (run 5000 times) 
-`pug` => **9ms** <br/> 
-`ejs` => **10ms** <br/> 
-`igodust` => **11ms** <br/> 
-`eta` => **21ms** <br/> 
-`liquidjs` => **171ms** <br/> 
+`dot` => **2ms** <br/> 
+`hogan` => **10ms** <br/> 
+`pug` => **11ms** <br/> 
+`igodust` => **12ms** <br/> 
+`mustache` => **14ms** <br/> 
+`ejs` => **20ms** <br/> 
+`eta` => **22ms** <br/> 
+`nunjucks` => **26ms** <br/> 
+`squirrelly` => **102ms** <br/> 
+`twig` => **145ms** <br/> 
+`liquidjs` => **209ms** <br/> 
 
 ### projects-escaped (run 5000 times) 
-`eta` => **54ms** <br/> 
-`igodust` => **59ms** <br/> 
+`dot` => **2ms** <br/> 
+`eta` => **52ms** <br/> 
+`igodust` => **58ms** <br/> 
+`hogan` => **61ms** <br/> 
 `handlebars` => **64ms** <br/> 
-`ejs` => **87ms** <br/> 
-`pug` => **190ms** <br/> 
-`liquidjs` => **293ms** <br/> 
+`mustache` => **73ms** <br/> 
+`nunjucks` => **79ms** <br/> 
+`ejs` => **86ms** <br/> 
+`squirrelly` => **137ms** <br/> 
+`twig` => **155ms** <br/> 
+`pug` => **192ms** <br/> 
+`liquidjs` => **301ms** <br/> 
 
 ### projects-unescaped (run 5000 times) 
-`igodust` => **13ms** <br/> 
-`eta` => **50ms** <br/> 
-`handlebars` => **63ms** <br/> 
-`ejs` => **85ms** <br/> 
-`pug` => **187ms** <br/> 
-`liquidjs` => **281ms** <br/> 
+`hogan` => **10ms** <br/> 
+`igodust` => **11ms** <br/> 
+`dot` => **34ms** <br/> 
+`mustache` => **36ms** <br/> 
+`nunjucks` => **50ms** <br/> 
+`eta` => **51ms** <br/> 
+`handlebars` => **60ms** <br/> 
+`ejs` => **86ms** <br/> 
+`twig` => **155ms** <br/> 
+`pug` => **190ms** <br/> 
+`liquidjs` => **292ms** <br/> 
 
 ### search-results (run 5000 times) 
-`igodust` => **22ms** <br/> 
-`pug` => **38ms** <br/> 
-`eta` => **54ms** <br/> 
-`handlebars` => **244ms** <br/> 
-`ejs` => **552ms** <br/> 
-`liquidjs` => **2572ms** <br/> 
+`dot` => **10ms** <br/> 
+`igodust` => **18ms** <br/> 
+`pug` => **39ms** <br/> 
+`eta` => **55ms** <br/> 
+`squirrelly` => **205ms** <br/> 
+`handlebars` => **239ms** <br/> 
+`ejs` => **556ms** <br/> 
+`nunjucks` => **584ms** <br/> 
+`mustache` => **677ms** <br/> 
+`hogan` => **679ms** <br/> 
+`twig` => **1726ms** <br/> 
+`liquidjs` => **2678ms** <br/> 
 
 ### simple-0 (run 5000 times) 
-`pug` => **2ms** <br/> 
-`ejs` => **4ms** <br/> 
+`dot` => **0ms** <br/> 
+`hogan` => **1ms** <br/> 
+`nunjucks` => **2ms** <br/> 
+`ejs` => **3ms** <br/> 
+`mustache` => **3ms** <br/> 
+`pug` => **3ms** <br/> 
 `igodust` => **6ms** <br/> 
+`twig` => **11ms** <br/> 
 `handlebars` => **14ms** <br/> 
 `eta` => **15ms** <br/> 
 `liquidjs` => **26ms** <br/> 
+`squirrelly` => **31ms** <br/> 
 
 ### simple-1 (run 5000 times) 
+`dot` => **2ms** <br/> 
+`pug` => **9ms** <br/> 
 `igodust` => **13ms** <br/> 
-`pug` => **14ms** <br/> 
 `eta` => **19ms** <br/> 
 `handlebars` => **29ms** <br/> 
 `ejs` => **49ms** <br/> 
-`liquidjs` => **203ms** <br/> 
+`nunjucks` => **58ms** <br/> 
+`squirrelly` => **105ms** <br/> 
+`hogan` => **126ms** <br/> 
+`mustache` => **151ms** <br/> 
+`twig` => **159ms** <br/> 
+`liquidjs` => **202ms** <br/> 
 
 ### simple-2 (run 5000 times) 
+`dot` => **2ms** <br/> 
 `igodust` => **10ms** <br/> 
 `pug` => **10ms** <br/> 
-`eta` => **20ms** <br/> 
-`handlebars` => **24ms** <br/> 
-`ejs` => **50ms** <br/> 
-`liquidjs` => **192ms** <br/> 
+`hogan` => **12ms** <br/> 
+`eta` => **19ms** <br/> 
+`mustache` => **20ms** <br/> 
+`handlebars` => **23ms** <br/> 
+`ejs` => **49ms** <br/> 
+`nunjucks` => **59ms** <br/> 
+`squirrelly` => **99ms** <br/> 
+`twig` => **138ms** <br/> 
+`liquidjs` => **193ms** <br/> 
 
 <!-- <end> -->
 
