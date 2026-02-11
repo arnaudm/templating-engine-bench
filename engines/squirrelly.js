@@ -1,17 +1,17 @@
-const ejs = require('ejs');
+const Sqrl = require('squirrelly');
 const fs = require('fs');
 
 const CACHE = {};
 
 module.exports = {
-  name: 'ejs',
-  ext: 'ejs',
+  name: 'squirrelly',
+  ext: 'sqrl',
   render: function(templatePath, data) {
     let template = CACHE[templatePath];
     if (!template) {
-      template = ejs.compile(fs.readFileSync(templatePath, 'utf-8'));
+      template = fs.readFileSync(templatePath, 'utf-8');
       CACHE[templatePath] = template;
     }
-    return template(data);
+    return Sqrl.render(template, data);
   }
 };

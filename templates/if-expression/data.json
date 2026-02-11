@@ -2,23 +2,23 @@
   "accounts": [
       {
           "balance": 0,
-          "balanceFormatted": "$0.00",
-          "status": "open"
+          "formattedBalance": "$0.00",
+          "accountStatus": "open"
       },
       {
           "balance": 10,
-          "balanceFormatted": "$10.00",
-          "status": "closed"
+          "formattedBalance": "$10.00",
+          "accountStatus": "closed"
       },
       {
           "balance": -100,
-          "balanceFormatted": "$-100.00",
-          "status": "suspended"
+          "formattedBalance": "$-100.00",
+          "accountStatus": "suspended"
       },
       {
           "balance": 999,
-          "balanceFormatted": "$999.00",
-          "status": "open"
+          "formattedBalance": "$999.00",
+          "accountStatus": "open"
       }
   ]
 }

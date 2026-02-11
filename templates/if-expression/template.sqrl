@@ -1,0 +1,18 @@
+{{@each(it.accounts) => account}}
+  <div>
+    {{@if(account.accountStatus === "closed")}}
+      <div>
+        Your account has been closed!
+      </div>
+    {{#elseif(account.accountStatus === "suspended")}}
+      <div>
+        Your account has been temporarily suspended
+      </div>
+    {{#elseif(account.accountStatus === "open")}}
+      <div>
+        Bank balance:
+        <span class="{{@if(account.balance < 0)}}negative{{#else}}positive{{/if}}">{{account.formattedBalance}}</span>
+      </div>
+    {{/if}}
+  </div>
+{{/each}}
