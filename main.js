@@ -1,76 +1,73 @@
-const fs = require('fs');
+const fs   = require('fs');
+const path = require('path');
 
-let templateDirs  = fs.readdirSync('./templates');
-let engineDirs    = fs.readdirSync('./engines');
+const ITERATIONS = 5000;
+const WARMUP     = 50;
 
-let enabledGroups  = [];
-let enabledEngines = [];
-
-if (enabledGroups && enabledGroups.length > 0) {
-  templateDirs = templateDirs.filter(dir => enabledGroups.includes(dir));
-}
-
-if (enabledEngines && enabledEngines.length > 0) {
-  engineDirs = engineDirs.filter(engine => enabledEngines.includes(engine.split('.').slice(0, -1).toString()));
-}
-
-const bench = (engine, template, data, n) => {
+function benchSync(engine, templatePath, data) {
+  for (let i = 0; i < WARMUP; i++) engine.render(templatePath, data);
   const start = Date.now();
-  for (let i = 0; i < n; i++) {
-    engine.render(template, data);
-  }
-  const end = Date.now();
-  return end - start;
-};
+  for (let i = 0; i < ITERATIONS; i++) engine.render(templatePath, data);
+  return Date.now() - start;
+}
 
-let results = '## RENDER \n';
+async function benchAsync(engine, templatePath, data) {
+  for (let i = 0; i < WARMUP; i++) await engine.render(templatePath, data);
+  const start = Date.now();
+  for (let i = 0; i < ITERATIONS; i++) await engine.render(templatePath, data);
+  return Date.now() - start;
+}
 
-for (let dir of templateDirs) { 
+async function runBenchmarks() {
+  const templateDirs = fs.readdirSync('./templates');
+  const engineFiles  = fs.readdirSync('./engines');
 
-  const dataPathJs   = './templates/' + dir + '/data.js';
-  const dataPathJson = './templates/' + dir + '/data.json';
-  let data;
+  let markdown = '## RENDER \n';
 
-  
+  for (const dir of templateDirs) {
+    const dataPathJs   = path.join('./templates', dir, 'data.js');
+    const dataPathJson = path.join('./templates', dir, 'data.json');
+    let data = {};
 
-  if (fs.existsSync(dataPathJs)) {
-    data = require(dataPathJs);
-  } else if (fs.existsSync(dataPathJson)) {
-    data = require(dataPathJson)
-  } else {
-    data = {};
-  }
-  
-  const n  = 5000;
-  results += `\n### ${dir} (runned ${n} times) \n`;
-
-  let benchmarks = [];
-
-  for (let engine of engineDirs ) {
-    const engineName = engine.split('.').slice(0, -1).toString();
-    const enginePath = require('./engines/' + engine);
-
-    const templatePath = './templates/' + dir + '/template.' + enginePath.ext;
-    if (!fs.existsSync(templatePath)) {
-      continue;
+    if (fs.existsSync(dataPathJs)) {
+      data = require(path.resolve(dataPathJs));
+    } else if (fs.existsSync(dataPathJson)) {
+      data = require(path.resolve(dataPathJson));
     }
-    console.log(`${engineName} working on ${dir}...`);
-    const benchmark = bench(enginePath, templatePath, data, n)
-    console.log(`${engineName} has finished to work !\n`)
-    benchmarks.push({ engineName, benchmark});
-  };
 
-  benchmarks.sort((a, b) => a.benchmark - b.benchmark);
+    markdown += `\n### ${dir} (run ${ITERATIONS} times) \n`;
+    const benchmarks = [];
 
-  for (let { engineName, benchmark } of benchmarks) {
-    results += `\`${engineName}\` => **${benchmark}ms** <br/> \n`;
+    for (const file of engineFiles) {
+      const engineName   = path.basename(file, '.js');
+      const engine       = require('./engines/' + file);
+      const templatePath = path.join('./templates', dir, 'template.' + engine.ext);
+
+      if (!fs.existsSync(templatePath)) continue;
+
+      console.log(`${engineName} working on ${dir}...`);
+      const ms = engine.async
+        ? await benchAsync(engine, templatePath, data)
+        : benchSync(engine, templatePath, data);
+      console.log(`${engineName} done\n`);
+      benchmarks.push({ engineName, ms });
+    }
+
+    benchmarks.sort((a, b) => a.ms - b.ms);
+
+    for (const { engineName, ms } of benchmarks) {
+      markdown += `\`${engineName}\` => **${ms}ms** <br/> \n`;
+    }
   }
-  
-};
 
+  return markdown;
+}
 
-let readmeContent = fs.readFileSync('readme.md', 'utf8');
-let [before, between, after] = readmeContent.split(/(<!-- <render performance> -->[\s\S]*<!-- <end> -->)/);
-between = '<!-- <render performance> -->\n' + results + '\n<!-- <end> -->';
-readmeContent = before + between + after;
-fs.writeFileSync('readme.md', readmeContent);
+function updateReadme(markdown) {
+  const content = fs.readFileSync('readme.md', 'utf8');
+  const [before, , after] = content.split(/(<!-- <render performance> -->[\s\S]*<!-- <end> -->)/);
+  const between = '<!-- <render performance> -->\n' + markdown + '\n<!-- <end> -->';
+  fs.writeFileSync('readme.md', before + between + after);
+}
+
+runBenchmarks().then(updateReadme);

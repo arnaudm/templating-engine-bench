@@ -31,68 +31,98 @@ The tests were carried out on:
 <!-- <render performance> -->
 ## RENDER 
 
-### friends (runned 5000 times) 
-`pug` => **120ms** <br/> 
-`eta` => **601ms** <br/> 
-`igodust` => **823ms** <br/> 
-`ejs` => **869ms** <br/> 
-`handlebars` => **904ms** <br/> 
-`liquidjs` => **17145ms** <br/> 
+### friends (run 5000 times) 
+`pug` => **148ms** <br/> 
+`eta` => **775ms** <br/> 
+`igodust` => **815ms** <br/> 
+`handlebars` => **1055ms** <br/> 
+`ejs` => **1099ms** <br/> 
+`nunjucks` => **3454ms** <br/> 
+`mustache` => **5895ms** <br/> 
+`hogan` => **6709ms** <br/> 
+`twig` => **11258ms** <br/> 
+`liquidjs` => **25342ms** <br/> 
 
-### if-expression (runned 5000 times) 
-`pug` => **6ms** <br/> 
-`eta` => **102ms** <br/> 
-`ejs` => **154ms** <br/> 
-`igodust` => **156ms** <br/> 
-`liquidjs` => **483ms** <br/> 
-
-### projects-escaped (runned 5000 times) 
-`handlebars` => **42ms** <br/> 
-`eta` => **126ms** <br/> 
-`igodust` => **153ms** <br/> 
-`pug` => **161ms** <br/> 
-`ejs` => **212ms** <br/> 
-`liquidjs` => **455ms** <br/> 
-
-### projects-unescaped (runned 5000 times) 
-`handlebars` => **39ms** <br/> 
-`igodust` => **119ms** <br/> 
-`eta` => **125ms** <br/> 
-`pug` => **154ms** <br/> 
-`ejs` => **213ms** <br/> 
-`liquidjs` => **455ms** <br/> 
-
-### search-results (runned 5000 times) 
-`pug` => **41ms** <br/> 
-`handlebars` => **157ms** <br/> 
-`igodust` => **175ms** <br/> 
-`eta` => **186ms** <br/> 
-`ejs` => **660ms** <br/> 
-`liquidjs` => **1996ms** <br/> 
-
-### simple-0 (runned 5000 times) 
+### if-expression (run 5000 times) 
 `pug` => **2ms** <br/> 
-`handlebars` => **9ms** <br/> 
-`igodust` => **56ms** <br/> 
-`eta` => **70ms** <br/> 
-`ejs` => **72ms** <br/> 
-`liquidjs` => **105ms** <br/> 
+`nunjucks` => **20ms** <br/> 
+`igodust` => **28ms** <br/> 
+`eta` => **82ms** <br/> 
+`twig` => **119ms** <br/> 
+`ejs` => **140ms** <br/> 
+`liquidjs` => **563ms** <br/> 
 
-### simple-1 (runned 5000 times) 
-`pug` => **8ms** <br/> 
-`handlebars` => **19ms** <br/> 
-`eta` => **104ms** <br/> 
-`igodust` => **127ms** <br/> 
-`ejs` => **197ms** <br/> 
-`liquidjs` => **452ms** <br/> 
+### projects-escaped (run 5000 times) 
+`handlebars` => **45ms** <br/> 
+`hogan` => **50ms** <br/> 
+`igodust` => **53ms** <br/> 
+`mustache` => **58ms** <br/> 
+`nunjucks` => **64ms** <br/> 
+`twig` => **114ms** <br/> 
+`eta` => **116ms** <br/> 
+`pug` => **169ms** <br/> 
+`ejs` => **222ms** <br/> 
+`liquidjs` => **579ms** <br/> 
 
-### simple-2 (runned 5000 times) 
+### projects-unescaped (run 5000 times) 
+`hogan` => **12ms** <br/> 
+`igodust` => **15ms** <br/> 
+`mustache` => **33ms** <br/> 
+`nunjucks` => **40ms** <br/> 
+`handlebars` => **42ms** <br/> 
+`eta` => **114ms** <br/> 
+`twig` => **132ms** <br/> 
+`pug` => **177ms** <br/> 
+`ejs` => **228ms** <br/> 
+`liquidjs` => **591ms** <br/> 
+
+### search-results (run 5000 times) 
+`igodust` => **25ms** <br/> 
+`pug` => **53ms** <br/> 
+`handlebars` => **161ms** <br/> 
+`eta` => **203ms** <br/> 
+`nunjucks` => **468ms** <br/> 
+`hogan` => **589ms** <br/> 
+`mustache` => **635ms** <br/> 
+`ejs` => **793ms** <br/> 
+`twig` => **1511ms** <br/> 
+`liquidjs` => **3057ms** <br/> 
+
+### simple-0 (run 5000 times) 
+`hogan` => **1ms** <br/> 
+`pug` => **1ms** <br/> 
+`mustache` => **2ms** <br/> 
+`nunjucks` => **3ms** <br/> 
+`handlebars` => **4ms** <br/> 
+`twig` => **4ms** <br/> 
+`igodust` => **8ms** <br/> 
+`ejs` => **45ms** <br/> 
+`eta` => **47ms** <br/> 
+`liquidjs` => **91ms** <br/> 
+
+### simple-1 (run 5000 times) 
 `pug` => **7ms** <br/> 
-`handlebars` => **16ms** <br/> 
-`eta` => **104ms** <br/> 
-`igodust` => **107ms** <br/> 
-`ejs` => **179ms** <br/> 
-`liquidjs` => **380ms** <br/> 
+`handlebars` => **18ms** <br/> 
+`igodust` => **19ms** <br/> 
+`nunjucks` => **47ms** <br/> 
+`eta` => **90ms** <br/> 
+`hogan` => **115ms** <br/> 
+`mustache` => **128ms** <br/> 
+`twig` => **131ms** <br/> 
+`ejs` => **200ms** <br/> 
+`liquidjs` => **550ms** <br/> 
+
+### simple-2 (run 5000 times) 
+`pug` => **5ms** <br/> 
+`handlebars` => **13ms** <br/> 
+`hogan` => **14ms** <br/> 
+`igodust` => **17ms** <br/> 
+`mustache` => **18ms** <br/> 
+`nunjucks` => **44ms** <br/> 
+`eta` => **90ms** <br/> 
+`twig` => **115ms** <br/> 
+`ejs` => **174ms** <br/> 
+`liquidjs` => **480ms** <br/> 
 
 <!-- <end> -->
 
