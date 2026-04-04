@@ -1,7 +1,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const ITERATIONS = 5000;
+const ITERATIONS = 2000;
 const WARMUP     = 50;
 
 function benchSync(engine, templatePath, data) {
