@@ -1,11 +1,12 @@
-const igodust = require('igo-dust');
+const igodust = require('@igojs/dust');
 
-igodust.configure({ cache: true });
+igodust.configure({ cache: true, views: '.' });
 
 module.exports = {
-    name: 'igodust',
-    ext: 'dust',
-    render: function(template, data) {
-      return igodust.renderFile(template, data);
-    }
+  name: 'igodust',
+  ext: 'dust',
+  async: true,
+  render: async function(template, data) {
+    return await igodust.renderFile(template, data);
+  }
 };

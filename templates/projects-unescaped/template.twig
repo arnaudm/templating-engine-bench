@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <p>{{ text | raw }}</p>
+    {% if projects %}
+    {% for project in projects %}
+      <a href="{{ project.url }}">{{ project.name | raw }}</a>
+      <p>{{ project.description | raw }}</p>
+    {% endfor %}
+    {% else %}
+      No projects
+    {% endif %}
+  </body>
+</html>
