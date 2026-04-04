@@ -11,6 +11,7 @@
     "eta": "^3.5.0",
     "handlebars": "^4.7.9",
     "hogan.js": "^3.0.2",
+    "igo-dust": "^0.3.5",
     "liquidjs": "^10.25.2",
     "mustache": "^4.2.0",
     "nunjucks": "^3.2.4",
