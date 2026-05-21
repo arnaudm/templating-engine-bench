@@ -7,9 +7,11 @@ module.exports = {
   name: 'ejs',
   ext: 'ejs',
   render: function(templatePath, data) {
-    if (!CACHE[templatePath]) {
-      CACHE[templatePath] = fs.readFileSync(templatePath, 'utf-8');
+    let template = CACHE[templatePath];
+    if (!template) {
+      template = ejs.compile(fs.readFileSync(templatePath, 'utf-8'));
+      CACHE[templatePath] = template;
     }
-    return ejs.render(CACHE[templatePath], data);
+    return template(data);
   }
 };

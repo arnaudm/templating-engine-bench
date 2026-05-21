@@ -1,12 +1,11 @@
-const { Eta }  = require('eta');
-const path     = require('path');
+const { Eta } = require('eta');
 
-const eta = new Eta({ views: path.join(__dirname, "..") })
+const eta = new Eta({ views: './', cache: true });
 
 module.exports = {
   name: 'eta',
-  ext: 'eta',
-  render: function(template, data) {
-    return eta.render(template, data);
+  ext:  'eta',
+  render: function(templatePath, data) {
+    return eta.render(templatePath, data);
   }
 };
