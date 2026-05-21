@@ -1,19 +1,19 @@
 {#accounts}
 <div>
-  {@eq key=.accountStatus value="closed"}
+  {@eq key=.status value="closed"}
   <div>
       Your account has been closed!
   </div>
   {/eq}
-  {@eq key=.accountStatus value="suspended"}
+  {@eq key=.status value="suspended"}
   <div>
       Your account has been temporarily suspended
   </div>
   {/eq}
-  {@eq key=.accountStatus value="open"}
+  {@eq key=.status value="open"}
   <div>
       Bank balance:
-      <span class="{@lt key=.balance value=0}negative{:else}positive{/lt}">{.formattedBalance}</span>
+      <span class="{@lt key=.balance value=0}negative{:else}positive{/lt}">{.balanceFormatted}</span>
   </div>
   {/eq}
 </div>

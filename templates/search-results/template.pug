@@ -15,7 +15,7 @@
           .view-icon#viewIconList
             i.icon-th-list
     #resultsTarget
-      .search-results(class=view)
+      .search-results(class="view-" + view)
         each record in searchRecords
           .search-item
             .search-item-container.drop-shadow
@@ -23,5 +23,12 @@
                 img(src=record.imgUrl)
               h4.title
                 a(href=record.viewItemUrl) #{record.title}
-              if record.description
-                | #{record.description}
+              | #{record.description}
+              if record.featured
+                div Featured!
+              if record.sizes
+                div
+                  | Sizes available:
+                  ul
+                    each size in record.sizes
+                      li= size

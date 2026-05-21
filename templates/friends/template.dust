@@ -9,7 +9,7 @@
         {#friends}
         <div class="friend">
             <ul>
-                <li>Name: {.getFullNameDust}</li>
+                <li>Name: {.firstName} {.lastName}</li>
                 <li>
                     Balance: {.balance}
                 </li>

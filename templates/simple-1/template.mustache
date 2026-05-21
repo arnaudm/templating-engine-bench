@@ -2,13 +2,11 @@
   <div class="colors">
       <span class="hello">Hello {{name}}! <strong>You have {{messageCount}} messages!</strong></span>
 
-      {{#colors}}
       <ul>
           {{#colors}}
           <li class="color">{{.}}</li>
           {{/colors}}
       </ul>
-      {{/colors}}
       {{^colors}}
       <div>
           No colors!

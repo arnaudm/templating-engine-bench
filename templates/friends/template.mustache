@@ -31,7 +31,6 @@
                 <li>
                     About: {{about}}
                 </li>
-                {{#tags}}
                 <li>
                     Tags:
                     <ul>
@@ -42,7 +41,16 @@
                         {{/tags}}
                     </ul>
                 </li>
-                {{/tags}}
+                <li>
+                    Friends:
+                    <ul>
+                        {{#friends}}
+                        <li>
+                            {{name}} ({{id}})
+                        </li>
+                        {{/friends}}
+                    </ul>
+                </li>
             </ul>
         </div>
         {{/friends}}

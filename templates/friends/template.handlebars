@@ -9,7 +9,7 @@
         {{#each friends}}
         <div class="friend">
             <ul>
-                <li>Name: {{getFullNameDust}}</li>
+                <li>Name: {{firstName}} {{lastName}}</li>
                 <li>
                     Balance: {{balance}}
                 </li>
@@ -38,6 +38,18 @@
                         {{#each tags}}
                         <li>
                             {{this}}
+                        </li>
+                        {{/each}}
+                    </ul>
+                </li>
+                {{/if}}
+                {{#if friends}}
+                <li>
+                    Friends:
+                    <ul>
+                        {{#each friends}}
+                        <li>
+                            {{name}} ({{id}})
                         </li>
                         {{/each}}
                     </ul>

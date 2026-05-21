@@ -43,6 +43,18 @@
                     </ul>
                 </li>
                 {% endif %}
+                {% if friend.friends %}
+                <li>
+                    Friends:
+                    <ul>
+                        {% for f in friend.friends %}
+                        <li>
+                            {{ f.name }} ({{ f.id }})
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% endif %}
             </ul>
         </div>
         {% endfor %}

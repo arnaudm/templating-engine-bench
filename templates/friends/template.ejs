@@ -9,7 +9,7 @@
         <% friends.forEach(function(friend) { %>
         <div class="friend">
             <ul>
-                <li>Name: <%= friend.getFullNameDust %></li>
+                <li>Name: <%= friend.firstName %> <%= friend.lastName %></li>
                 <li>
                     Balance: <%= friend.balance %>
                 </li>
@@ -22,6 +22,39 @@
                 <li>
                     Image: <img src="<%= friend.picture %>">
                 </li>
+                <li>
+                    Company: <%= friend.company %>
+                </li>
+                <li>
+                    Email: <a href="mailto:<%= friend.email %>"><%= friend.email %></a>
+                </li>
+                <li>
+                    About: <%= friend.about %>
+                </li>
+                <% if (friend.tags) { %>
+                <li>
+                    Tags:
+                    <ul>
+                        <% friend.tags.forEach(function(tag) { %>
+                        <li>
+                            <%= tag %>
+                        </li>
+                        <% }) %>
+                    </ul>
+                </li>
+                <% } %>
+                <% if (friend.friends) { %>
+                <li>
+                    Friends:
+                    <ul>
+                        <% friend.friends.forEach(function(f) { %>
+                        <li>
+                            <%= f.name %> (<%= f.id %>)
+                        </li>
+                        <% }) %>
+                    </ul>
+                </li>
+                <% } %>
             </ul>
         </div>
         <% }); %>

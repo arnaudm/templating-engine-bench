@@ -39,7 +39,6 @@
               Featured!
             </div>
             {{/featured}}
-            {{#sizes}}
             <div>
               Sizes available:
               <ul>
@@ -48,7 +47,6 @@
                 {{/sizes}}
               </ul>
             </div>
-            {{/sizes}}
           </div>
         </div>
         {{/searchRecords}}

@@ -9,7 +9,7 @@
     {% for friend in friends %}
     <div class="friend">
       <ul>
-        <li>Name: {{ friend.getFullNameDust }}</li>
+        <li>Name: {{ friend.firstName }} {{ friend.lastName }}</li>
         <li>
           Balance: {{ friend.balance }}
         </li>
