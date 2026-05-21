@@ -1,4 +1,5 @@
 const dust = require('dustjs-linkedin');
+require('dustjs-helpers');  // adds @eq, @lt, @gt, etc.
 const fs   = require('fs');
 
 dust.config.cache = true;
