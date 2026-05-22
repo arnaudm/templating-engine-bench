@@ -15,7 +15,6 @@ const ENGINE_URLS = {
   handlebars: 'https://handlebarsjs.com/',
   hogan:      'https://twitter.github.io/hogan.js/',
   igodust:    'https://igocreate.github.io/igo/dust/getting-started',
-  liquidjs:   'https://liquidjs.com/',
   mustache:   'https://github.com/janl/mustache.js',
   nunjucks:   'https://mozilla.github.io/nunjucks/',
   pug:        'https://pugjs.org/',
