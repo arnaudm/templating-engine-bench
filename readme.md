@@ -11,22 +11,22 @@ The tests were carried out on:
 <!-- <render performance> -->
 ## OVERALL SCORE
 
-Engines tested: [`pug`](https://pugjs.org/), [`igodust`](https://igocreate.github.io/igo/dust/getting-started), [`hogan`](https://twitter.github.io/hogan.js/), [`handlebars`](https://handlebarsjs.com/), [`eta`](https://eta.js.org/), [`dustjs`](https://github.com/linkedin/dustjs), [`mustache`](https://github.com/janl/mustache.js), [`nunjucks`](https://mozilla.github.io/nunjucks/), [`ejs`](https://ejs.co/), [`twig`](https://github.com/twigjs/twig.js), [`liquidjs`](https://liquidjs.com/)
+Engines tested: [`pug`](https://pugjs.org/), [`igodust`](https://igocreate.github.io/igo/dust/getting-started), [`squirrelly`](https://squirrelly.js.org/), [`handlebars`](https://handlebarsjs.com/), [`hogan`](https://twitter.github.io/hogan.js/), [`mustache`](https://github.com/janl/mustache.js), [`eta`](https://eta.js.org/), [`dustjs`](https://github.com/linkedin/dustjs), [`nunjucks`](https://mozilla.github.io/nunjucks/), [`ejs`](https://ejs.co/), [`twig`](https://github.com/twigjs/twig.js)
 
 _geometric mean of (fastest / this engine) across all templates, on a 0–100 scale_
 
 ```
-pug         ██████████████████████████████████             77/100
-igodust     ████████████████████████████                   64/100
-hogan       ██████████████████                             40/100
-handlebars  ████████████████                               37/100
-eta         ███████████████                                33/100
-dustjs      █████████████                                  29/100
-mustache    █████████████                                  29/100
-nunjucks    █████████                                      20/100
-ejs         ████████                                       18/100
-twig        ███                                             7/100
-liquidjs    ██                                              4/100
+pug v3.0.4         ██████████████████████████████████             78/100
+igodust v6.0.1     ████████████████████████████                   63/100
+squirrelly v9.1.0  ███████████████████████████                    61/100
+handlebars v4.7.9  ██████████████                                 32/100
+hogan v3.0.2       ██████████████                                 31/100
+mustache v4.2.0    ████████████                                   27/100
+eta v3.5.0         ███████████                                    26/100
+dustjs v3.0.1      ███████████                                    24/100
+nunjucks v3.2.4    ███████                                        15/100
+ejs v5.0.2         █████                                          12/100
+twig v1.17.1       ███                                             6/100
 ```
 
 ## RENDER 
@@ -34,126 +34,126 @@ liquidjs    ██                                              4/100
 ### friends (run 10000 times)
 
 ```
-igodust     █                                               656ms
-eta         █                                               737ms
-pug         ████                                            973ms
-handlebars  ███████████                                    1780ms
-hogan       █████████████                                  2148ms
-dustjs      ███████████████                                2429ms
-mustache    ████████████████                               2632ms
-nunjucks    ███████████████████████                        5027ms
-ejs         █████████████████████████                      6030ms
-twig        ████████████████████████████████████          15573ms
-liquidjs    ████████████████████████████████████████████  31561ms
+igodust     █                                               477ms
+eta         ██                                              555ms
+squirrelly  ██████                                          733ms
+pug         ██████                                          736ms
+handlebars  ███████████████                                1527ms
+hogan       ██████████████████                             1976ms
+dustjs      ████████████████████                           2241ms
+mustache    █████████████████████                          2314ms
+nunjucks    ██████████████████████████████                 4946ms
+ejs         █████████████████████████████████              6029ms
+twig        ████████████████████████████████████████████  14011ms
 ```
 
 ### if-expression (run 10000 times)
 
 ```
-pug       █                                               5ms
-igodust   █████████████                                  16ms
-dustjs    █████████████████                              22ms
-ejs       █████████████████                              22ms
-nunjucks  █████████████████                              23ms
-eta       ███████████████████                            26ms
-twig      ██████████████████████████████████████        126ms
-liquidjs  ████████████████████████████████████████████  204ms
+pug         █                                               4ms
+igodust     ████████                                        8ms
+squirrelly  ████████                                        8ms
+dustjs      ████████████████████                           19ms
+nunjucks    ██████████████████████                         22ms
+ejs         ███████████████████████                        24ms
+eta         █████████████████████████                      27ms
+twig        ████████████████████████████████████████████  105ms
 ```
 
 ### projects-escaped (run 10000 times)
 
 ```
-igodust     █                                              45ms
-handlebars  █████                                          55ms
-eta         ████████                                       65ms
-nunjucks    ███████████                                    73ms
-mustache    █████████████                                  78ms
-hogan       ██████████████                                 82ms
-dustjs      ████████████████                               90ms
-ejs         █████████████████                              93ms
-twig        ███████████████████████████                   143ms
-pug         █████████████████████████████████████         224ms
-liquidjs    ████████████████████████████████████████████  300ms
+igodust     █                                              41ms
+squirrelly  █                                              42ms
+handlebars  ██████                                         50ms
+eta         ████████████                                   62ms
+mustache    ███████████████                                69ms
+nunjucks    ████████████████                               70ms
+hogan       █████████████████                              74ms
+dustjs      ██████████████████████                         86ms
+ejs         ██████████████████████████                    101ms
+twig        ████████████████████████████████              122ms
+pug         ████████████████████████████████████████████  184ms
 ```
 
 ### projects-unescaped (run 10000 times)
 
 ```
-pug         █                                               6ms
-igodust     ████                                            9ms
-hogan       █████████                                      15ms
-handlebars  █████████████                                  21ms
-mustache    █████████████                                  22ms
-eta         ███████████████                                26ms
-dustjs      █████████████████                              30ms
-ejs         ███████████████████                            38ms
-nunjucks    ████████████████████                           41ms
-twig        ████████████████████████████████████████      235ms
-liquidjs    ████████████████████████████████████████████  338ms
+pug         █                                               5ms
+squirrelly  ████                                            7ms
+igodust     ██████                                          8ms
+hogan       █████████████                                  14ms
+handlebars  ███████████████                                17ms
+mustache    ████████████████                               18ms
+dustjs      █████████████████████                          25ms
+eta         ██████████████████████                         28ms
+nunjucks    ██████████████████████████                     38ms
+ejs         ███████████████████████████                    40ms
+twig        ████████████████████████████████████████████  137ms
 ```
 
 ### search-results (run 10000 times)
 
 ```
-igodust     █                                               78ms
-pug         █                                               83ms
-eta         ███                                             97ms
-handlebars  ██████████                                     180ms
-hogan       ████████████                                   215ms
-dustjs      █████████████                                  239ms
-mustache    ███████████████                                273ms
-nunjucks    ██████████████████████                         492ms
-ejs         ████████████████████████                       558ms
-twig        ███████████████████████████████████           1453ms
-liquidjs    ████████████████████████████████████████████  2982ms
+igodust     █                                               45ms
+pug         █                                               49ms
+squirrelly  ███                                             55ms
+eta         █████                                           65ms
+handlebars  ██████████████                                 134ms
+hogan       ██████████████████                             179ms
+dustjs      ███████████████████                            192ms
+mustache    ████████████████████                           210ms
+nunjucks    ███████████████████████████████                462ms
+ejs         █████████████████████████████████              536ms
+twig        ████████████████████████████████████████████  1262ms
 ```
 
 ### simple-0 (run 10000 times)
 
 ```
-pug         █                                              3ms
-hogan       ████████████                                   7ms
-igodust     ██████████████                                 8ms
-dustjs      █████████████████                             10ms
-nunjucks    █████████████████                             10ms
-mustache    ███████████████████                           11ms
-handlebars  ████████████████████                          12ms
-ejs         ███████████████████████                       14ms
-twig        ███████████████████████████                   18ms
-eta         █████████████████████████████████             26ms
-liquidjs    ████████████████████████████████████████████  50ms
+pug         █                                              2ms
+squirrelly  █████████████████                              6ms
+hogan       ███████████████████                            7ms
+igodust     ███████████████████                            7ms
+mustache    ████████████████████████                       9ms
+dustjs      ██████████████████████████                    10ms
+nunjucks    ██████████████████████████                    10ms
+handlebars  ███████████████████████████                   11ms
+ejs         ██████████████████████████████████            16ms
+twig        ██████████████████████████████████            16ms
+eta         ████████████████████████████████████████████  27ms
 ```
 
 ### simple-1 (run 10000 times)
 
 ```
-pug         █                                               8ms
-igodust     █████                                          12ms
-hogan       ███████████                                    19ms
-dustjs      ██████████████                                 23ms
-handlebars  ██████████████                                 24ms
-eta         █████████████████                              29ms
-mustache    █████████████████                              29ms
-ejs         ████████████████████████                       49ms
-nunjucks    █████████████████████████                      52ms
-twig        █████████████████████████████████████         129ms
-liquidjs    ████████████████████████████████████████████  211ms
+pug         █                                               5ms
+igodust     ████████                                        9ms
+squirrelly  ████████                                        9ms
+handlebars  ██████████████████                             19ms
+hogan       ██████████████████                             19ms
+mustache    ███████████████████                            20ms
+dustjs      ████████████████████                           22ms
+eta         ████████████████████████                       30ms
+nunjucks    ████████████████████████████████               51ms
+ejs         ██████████████████████████████████             59ms
+twig        ████████████████████████████████████████████  114ms
 ```
 
 ### simple-2 (run 10000 times)
 
 ```
-pug         █                                               6ms
-igodust     ███████                                        11ms
-hogan       ████████████                                   17ms
-handlebars  ███████████████                                21ms
-dustjs      ████████████████                               22ms
-mustache    ██████████████████                             27ms
-eta         ███████████████████                            29ms
-nunjucks    ██████████████████████████                     48ms
-ejs         ██████████████████████████                     51ms
-twig        █████████████████████████████████████         115ms
-liquidjs    ████████████████████████████████████████████  198ms
+pug         █                                               5ms
+squirrelly  ████████                                        9ms
+igodust     █████████                                      10ms
+handlebars  █████████████████                              17ms
+hogan       █████████████████                              17ms
+dustjs      ████████████████████                           21ms
+mustache    ████████████████████                           21ms
+eta         █████████████████████████                      29ms
+nunjucks    ████████████████████████████████               48ms
+ejs         ██████████████████████████████████             53ms
+twig        ████████████████████████████████████████████  105ms
 ```
 
 <!-- <end> -->
