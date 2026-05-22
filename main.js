@@ -22,6 +22,29 @@ const ENGINE_URLS = {
   twig:       'https://github.com/twigjs/twig.js',
 };
 
+const ENGINE_PKGS = {
+  dustjs:     'dustjs-linkedin',
+  ejs:        'ejs',
+  eta:        'eta',
+  handlebars: 'handlebars',
+  hogan:      'hogan.js',
+  igodust:    '@igojs/dust',
+  mustache:   'mustache',
+  nunjucks:   'nunjucks',
+  pug:        'pug',
+  squirrelly: 'squirrelly',
+  twig:       'twig',
+};
+
+function engineVersion(engineName) {
+  const pkg = ENGINE_PKGS[engineName];
+  if (!pkg) return '';
+  // Read package.json directly — some packages (ejs, eta) restrict the
+  // "./package.json" subpath in their exports field, so require() fails.
+  try { return JSON.parse(fs.readFileSync(path.join('node_modules', pkg, 'package.json'), 'utf8')).version; }
+  catch (e) { return ''; }
+}
+
 function runWorker(engineName, group) {
   return new Promise((resolve, reject) => {
     const env = { ...process.env, BENCH_ITERATIONS: String(ITERATIONS), BENCH_WARMUP: String(WARMUP) };
@@ -105,10 +128,15 @@ async function main() {
     .join(', ') + '\n\n';
   markdown += '_geometric mean of (fastest / this engine) across all templates, on a 0–100 scale_\n\n';
   markdown += '```\n';
-  const scoreNameW = Math.max(...scores.map(s => s.engineName.length));
-  for (const { engineName, score } of scores) {
+  const labels     = scores.map(s => {
+    const v = engineVersion(s.engineName);
+    return v ? `${s.engineName} v${v}` : s.engineName;
+  });
+  const scoreNameW = Math.max(...labels.map(l => l.length));
+  for (let i = 0; i < scores.length; i++) {
+    const { score } = scores[i];
     const bar = '█'.repeat(Math.round((score / 100) * BAR_WIDTH)) + ' '.repeat(BAR_WIDTH - Math.round((score / 100) * BAR_WIDTH));
-    markdown += `${engineName.padEnd(scoreNameW)}  ${bar}  ${String(score).padStart(3)}/100\n`;
+    markdown += `${labels[i].padEnd(scoreNameW)}  ${bar}  ${String(score).padStart(3)}/100\n`;
   }
   markdown += '```\n\n';
   markdown += '## RENDER \n';
