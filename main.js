@@ -18,6 +18,7 @@ const ENGINE_URLS = {
   mustache:   'https://github.com/janl/mustache.js',
   nunjucks:   'https://mozilla.github.io/nunjucks/',
   pug:        'https://pugjs.org/',
+  squirrelly: 'https://squirrelly.js.org/',
   twig:       'https://github.com/twigjs/twig.js',
 };
 

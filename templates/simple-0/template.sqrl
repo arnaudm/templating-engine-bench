@@ -1,0 +1,6 @@
+<header>
+  <h1>Hello, {{it.name}}!</h1>
+  <p>You have {{it.messageCount}} new messages.</p>
+  <p>Last login: {{it.lastLogin}}</p>
+  <p>Status: {{it.status}}</p>
+</header>
